@@ -1,0 +1,27 @@
+<div class="d-flex justify-center mt-40">
+  <div class="signin">
+    <p-card header="Sing Up" subheader="">
+
+      <div class="flex flex-column">
+        <div>
+          <div>E-mail</div>
+          <input id="email" type="email" name="email" formControlName="email" pInputText placeholder="Username" #email>
+        </div>
+        <div class="mt-10">
+          <div>Password</div>
+          <input id="password" name="password" formControlName="password" type="password" pInputText placeholder="Password" #password>
+        </div>
+      </div>
+
+
+      <ng-template pTemplate="footer">
+        <div class="d-flex align-items-center justify-between">
+          <button pButton label="Sign Up" (click)="signUp(email.value, password.value)" ></button>
+          <button pButton label="Sign in" routerLink="/signin" ></button>
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+</div>
+
+
