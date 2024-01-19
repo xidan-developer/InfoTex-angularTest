@@ -34,7 +34,7 @@ export class AuthService {
         this.observeUserState()
       })
       .catch((error) => {
-        alert(error.message);
+        alert("Не правильно введенный пароль или логин");
       })
   }
 
