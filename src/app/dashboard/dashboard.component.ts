@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit,AfterViewInit{
 
   addTaskValueText : string = '';
   addTaskValueImage : string = '';
-
+  recordTime : string = '';
   private editorEdit: EditorJS;
 
   ngAfterViewInit(){
@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit,AfterViewInit{
   ngOnInit() {
     this.addTaskValueText = '';
     this.addTaskValueImage = '';
+    this.recordTime = '';
     this.getData();
 
   }
