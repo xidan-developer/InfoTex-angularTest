@@ -48,7 +48,7 @@ export class AuthService {
         this.observeUserState()
       })
       .catch((error) => {
-        alert(error.message);
+        alert("Ошибка введенных данных");
       })
   }
 
