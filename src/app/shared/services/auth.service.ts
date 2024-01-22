@@ -14,7 +14,7 @@ export class AuthService {
     private router: Router,
     private ngZone: NgZone
   ) {
-    // OBSERVER save user in localStorage (log-in) and setting up null when log-out
+    // Обсервер сохраняет пользователя в localStorage (вход в систему) и устанавливает значение null при выходе из системы
     this.firebaseAuthenticationService.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
@@ -26,7 +26,7 @@ export class AuthService {
 
   }
 
-  // log-in with email and password
+  // войдите в систему, указав адрес электронной почты и пароль
   logInWithEmailAndPassword(email: string, password: string) {
     return this.firebaseAuthenticationService.signInWithEmailAndPassword(email, password)
       .then((userCredential) => {

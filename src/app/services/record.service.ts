@@ -72,11 +72,14 @@ export class RecordService {
     return unixTime;
   }
 
+
+  //Получение данных
   getData(): Observable<any> {
     this.test = this.data
     return of(this.test);
   }
 
+  //Добавление в общий массив
   addData(record,times): Observable<any> {
     let date = new Date(times);
     let getDate =  ('0' + date.getDate()).slice(-2) + '.' + ('0' + (date.getMonth() + 1)).slice(-2) + '.' + date.getFullYear() + ' ' + ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
@@ -86,12 +89,14 @@ export class RecordService {
 
   }
 
+  //Обновление элемента массива
   updateData(record): Observable<any> {
     const index = this.data.findIndex(r => r.id === record.id);
     this.data[index] = record;
     return of(this.data);
   }
 
+  //Удаление элемента массива
   deleteData(id): Observable<any> {
     const index = this.data.findIndex(r => r.id === id);
     this.data.splice(index, 1);

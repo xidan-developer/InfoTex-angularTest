@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit,AfterViewInit{
       this.records = data;
     });
   }
-
+  //конвертирование в верстку
   convertDataToHtml(blocks): void {
 
     let convertedHtml: any = "";

@@ -14,17 +14,14 @@ export class EditComponent implements OnInit,AfterViewInit{
   recordId: any;
   addTaskValueText : string = '';
   editTaskImage : string = '';
+
   constructor(public recordService: RecordService , private DashboardComponent: DashboardComponent) {
     this.editTaskImage = this.DashboardComponent.record.image
     this.recordId = this.DashboardComponent.record.id
   }
 
-
-
-
-
+  //инициализация редактора
   ngOnInit() {
-
     this.initializeEditor(this.DashboardComponent.addTaskValueText)
   }
 
@@ -46,7 +43,7 @@ export class EditComponent implements OnInit,AfterViewInit{
     });
   }
 
-
+  //Сохранение данных с редактора и отправка на обновление массива
   updateRecord(): void {
     this.editorText.save().then((outputData) => {
 
