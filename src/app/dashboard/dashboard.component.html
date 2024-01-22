@@ -6,23 +6,24 @@
       <button (click)="logOut()" pButton pRipple label="Logout" class="p-button-success"></button>
     </div>
 
-    <div class="tasks_list">
+<!--    <div class="tasks_list">-->
+<!--      <div id="editorText"></div>-->
+<!--      <div *ngIf="isEdit">-->
+<!--        <h3>Edit Record {{record.id}}</h3>-->
+<!--        <div>-->
+<!--          <div class="mt-10">-->
+<!--            <div>Text</div>-->
+<!--&lt;!&ndash;            <input class="mt-10 w-100" type="text" name="asdasdasdas" [(ngModel)]="addTaskValueText">&ndash;&gt;-->
 
-      <div *ngIf="isEdit">
-        <h3>Edit Record {{record.id}}</h3>
-        <div>
-          <div class="mt-10">
-            <div>Text</div>
-            <input class="mt-10 w-100" type="text" name="asdasdasdas" [(ngModel)]="addTaskValueText">
-          </div>
-          <div class="mt-10">
-            <div>Image:</div>
-            <input class="mt-10 w-100" type="text" name="scxvxcvxcv" [(ngModel)]="addTaskValueImage">
-          </div>
+<!--          </div>-->
+<!--          <div class="mt-10">-->
+<!--            <div>Image:</div>-->
+<!--            <input class="mt-10 w-100" type="text" name="scxvxcvxcv" [(ngModel)]="addTaskValueImage">-->
+<!--          </div>-->
 
-          <button pButton class="p-button-success mt-10" (click)="updateRecord()" type="submit">Update</button>
-        </div>
-      </div>
+<!--          <button pButton class="p-button-success mt-10" (click)="updateRecord()" type="submit">Update</button>-->
+<!--        </div>-->
+<!--      </div>-->
 
 
       <div *ngFor="let record of records" class="mt-10">
@@ -30,7 +31,7 @@
 
           <div class="w-100">
             <div class="tasks_list_item__time">{{record.timestamp}}</div>
-            <div class="tasks_list_item__text mt-10" [innerHTML]="record.text">
+            <div class="tasks_list_item__text mt-10" [innerHTML]="convertDataToHtml(record.text)">
 
             </div>
 
@@ -43,13 +44,12 @@
 
         </div>
         <div class="d-flex g-10 mt-10 justify-end">
-          <button pButton (click)="editRecord(record)" class="p-button-help">Edit</button>
+          <button [routerLink]="['/dashboard',record.id,'edit']"  pButton (click)="editRecord(record)" class="p-button-help">Edit</button>
           <button pButton (click)="deleteRecord(record.id)" class="p-button-danger">Delete</button>
         </div>
 
       </div>
 
-    </div>
   </div>
 
 

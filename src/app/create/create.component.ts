@@ -77,12 +77,11 @@ export class CreateComponent implements OnInit,AfterViewInit{
   addRecord(): void {
 
     this.editor.save().then(dataBig => {
-
-      this.recordService.addData(this.convertDataToHtml(dataBig),dataBig.time).subscribe(data => {
-
+      this.recordService.addData(dataBig,dataBig.time).subscribe(data => {
       });
     })
 
   }
 }
+
 

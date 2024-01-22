@@ -5,10 +5,11 @@ import {SignupComponent} from "./signup/signup.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import { AuthGuard } from './shared/guards/auth.guard';
 import {CreateComponent} from "./create/create.component";
+import {EditComponent} from "./edit/edit.component";
 
 const itemRoutes: Routes = [
   { path: "create", component: CreateComponent},
-
+  { path: ":id/edit", component: EditComponent},
 ];
 
 const routes: Routes = [

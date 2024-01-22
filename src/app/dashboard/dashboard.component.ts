@@ -14,20 +14,17 @@ export class DashboardComponent implements OnInit,AfterViewInit{
 
   records: any = [];
   record: any = {};
-  isEdit = false;
-
   addTaskValueText : string = '';
   addTaskValueImage : string = '';
   recordTime : string = '';
-  private editorEdit: EditorJS;
+
+
 
   ngAfterViewInit(){
-    this.initializeEditor();
-  }
-
-  private initializeEditor(): void {
 
   }
+
+
 
   ngOnInit() {
     this.addTaskValueText = '';
@@ -38,33 +35,53 @@ export class DashboardComponent implements OnInit,AfterViewInit{
   }
 
   getData(): void {
+
     this.recordService.getData().subscribe(data => {
       this.records = data;
-
     });
   }
 
-  convertDataToData(blocks): void {
-    let convertedData: any = "";
-    return convertedData;
+  convertDataToHtml(blocks): void {
+
+    let convertedHtml: any = "";
+    blocks.blocks.map((block: any) => {
+
+      switch (block.type) {
+        case "header":
+          convertedHtml += `<h${block.data.level}>${block.data.text}</h${block.data.level}>`;
+          break;
+        case "embded":
+          convertedHtml += `<div><iframe width="560" height="315" src="${block.data.embed}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
+          break;
+        case "paragraph":
+          convertedHtml += `<p>${block.data.text}</p>`;
+          break;
+        case "delimiter":
+          convertedHtml += "<hr />";
+          break;
+        case "image":
+          convertedHtml += `<img class="img-fluid" src="${block.data.file.url}" title="${block.data.caption}" /><br /><em>${block.data.caption}</em>`;
+          break;
+        case "list":
+          convertedHtml += "<ul>";
+          block.data.items.forEach(function(li) {
+            convertedHtml += `<li>${li}</li>`;
+          });
+          convertedHtml += "</ul>";
+          break;
+        default:
+          console.log("Unknown block type", block.type);
+          break;
+      }
+    });
+    return convertedHtml;
   }
 
-
   editRecord(record): void {
+
     this.record = record;
     this.addTaskValueImage = record.image;
     this.addTaskValueText = record.text;
-    this.isEdit = true;
-  }
-
-  updateRecord(): void {
-
-    this.record.text = this.addTaskValueText
-    this.record.image = this.addTaskValueImage
-    this.recordService.updateData(this.record).subscribe(data => {
-      this.isEdit = false;
-      this.getData();
-    });
   }
 
   deleteRecord(id): void {

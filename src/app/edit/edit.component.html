@@ -1,0 +1,22 @@
+<div class="modal_bg">
+  <div class="modal">
+
+    <div class="d-flex justify-between">
+      <div>
+        Редактировать записать номер {{recordId}}
+      </div>
+      <img routerLink="/dashboard" class="modal__close" src="/assets/сlossed.png" alt="">
+    </div>
+    <div>
+      <div class="mt-10" id="editorText"></div>
+      <input class="mt-10 w-100" type="text" name="scxvxcvxcv" [(ngModel)]="editTaskImage">
+
+      <div class="mt-10">
+        <button pButton class="p-button-success" (click)="updateRecord()"> Edit</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+

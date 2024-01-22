@@ -21,6 +21,7 @@ import { DashboardPipe } from './dashboard.pipe';
 import {FormsModule} from "@angular/forms";
 
 import { HttpClientModule } from '@angular/common/http';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     SigninComponent,
     SignupComponent,
     DashboardComponent,
-    DashboardPipe
+    DashboardPipe,
+    EditComponent
   ],
   imports: [
     ButtonModule,
